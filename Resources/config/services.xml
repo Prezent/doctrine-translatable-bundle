@@ -1,0 +1,39 @@
+<?xml version="1.0" ?>
+<container xmlns="http://symfony.com/schema/dic/services"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://symfony.com/schema/dic/services http://symfony.com/schema/dic/services/services-1.0.xsd">
+
+    <parameters>
+        <parameter key="prezent_doctrine_translatable.listener.class">Prezent\Doctrine\Translatable\EventListener\TranslatableListener</parameter>
+        <parameter key="prezent_doctrine_translatable.listener.locale.class">Prezent\Doctrine\TranslatableBundle\EventListener\LocaleListener</parameter>
+        <parameter key="prezent_doctrine_translatable.metadata_factory.class">Metadata\MetadataFactory</parameter>
+        <parameter key="prezent_doctrine_translatable.driver_chain.class">Metadata\Driver\DriverChain</parameter>
+        <parameter key="prezent_doctrine_translatable.driver.annotation.class">Prezent\Doctrine\Translatable\Mapping\Driver\AnnotationDriver</parameter>
+    </parameters>
+
+    <services>
+        <service id="prezent_doctrine_translatable.metadata_factory" class="%prezent_doctrine_translatable.metadata_factory.class%">
+            <argument type="service">
+                <service class="%prezent_doctrine_translatable.driver_chain.class%">
+                    <argument type="collection">
+                        <argument type="service">
+                            <service class="%prezent_doctrine_translatable.driver.annotation.class%">
+                                <argument type="service" id="annotation_reader" />
+                            </service>
+                        </argument>
+                    </argument>
+                </service>
+            </argument>
+        </service>
+
+        <service id="prezent_doctrine_translatable.listener" class="%prezent_doctrine_translatable.listener.class%">
+            <argument type="service" id="prezent_doctrine_translatable.metadata_factory" />
+            <tag name="doctrine.event_subscriber" connection="default" />
+        </service>
+
+        <service id="prezent_doctrine_translatable.listener.locale" class="%prezent_doctrine_translatable.listener.locale.class%" public="false">
+            <argument type="service" id="prezent_doctrine_translatable.listener" />
+            <tag name="kernel.event_subscriber" />
+        </service>
+    </services>
+</container>
