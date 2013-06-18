@@ -6,7 +6,9 @@
         "doctrine2",
         "extensions",
         "translatable",
-        "i18n"
+        "i18n",
+        "symfony2",
+        "bundle"
     ],
     "homepage": "http://www.prezent.nl",
     "authors": [{
