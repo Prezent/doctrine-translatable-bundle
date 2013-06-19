@@ -31,7 +31,7 @@
             <tag name="doctrine.event_subscriber" connection="default" />
         </service>
 
-        <service id="prezent_doctrine_translatable.listener.locale" class="%prezent_doctrine_translatable.listener.locale.class%" public="false">
+        <service id="prezent_doctrine_translatable.listener.locale" class="%prezent_doctrine_translatable.listener.locale.class%">
             <argument type="service" id="prezent_doctrine_translatable.listener" />
             <tag name="kernel.event_subscriber" />
         </service>
