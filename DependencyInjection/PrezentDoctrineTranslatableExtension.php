@@ -34,7 +34,6 @@ class PrezentDoctrineTranslatableExtension extends Extension
         $loader->load('services.xml');
 
         $container->getDefinition('prezent_doctrine_translatable.listener')
-                  ->addMethodCall('setFallbackMode', array($config['fallbackMode']))
                   ->addMethodCall('setFallbackLocale', array($config['fallbackLocale']));
     }
 }
