@@ -35,5 +35,10 @@ class PrezentDoctrineTranslatableExtension extends Extension
 
         $container->getDefinition('prezent_doctrine_translatable.listener')
                   ->addMethodCall('setFallbackLocale', array($config['fallbackLocale']));
+
+        $bundles = $container->getParameter('kernel.bundles');
+        if (isset($bundles['SonataDoctrineORMAdminBundle'])) {
+            $loader->load('sonata.xml');
+        }
     }
 }
