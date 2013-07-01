@@ -46,11 +46,10 @@ public function registerBundles()
 
 ### Step 3: Configuration
 
-You can optionlly configure the fallback mode (default: off) and fallback locale (default: en).
-The current locale is automatically set from the request.
+You can optionlly configure the fallback locale (default: en).
+The current locale is automatically set from the request and defaults to the fallback locale.
 
 ```yaml
 prezent_doctrine_translatable:
-    fallbackMode: false
-    fallbackLocale: en
+    fallback_locale: en
 ```

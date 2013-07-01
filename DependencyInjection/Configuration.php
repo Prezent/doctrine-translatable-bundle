@@ -28,7 +28,7 @@ class Configuration implements ConfigurationInterface
         $rootNode = $treeBuilder->root('prezent_doctrine_translatable');
         $rootNode
             ->children()
-                ->scalarNode('fallbackLocale')->defaultValue('en')->end()
+                ->scalarNode('fallback_locale')->defaultValue('en')->end()
             ->end();
 
         return $treeBuilder;
