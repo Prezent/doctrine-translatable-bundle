@@ -59,3 +59,19 @@ prezent_doctrine_translatable:
 
 Please refer to the [doctrine-translatable documentation](https://github.com/Prezent/doctrine-translatable/blob/master/doc/index.md)
 on how to use the translatable extension.
+
+## Integration with Forms and Sonata Admin
+
+You can use the [a2lix/TranslationFormBundle](https://github.com/a2lix/TranslationFormBundle) to integrate the
+translatable extension into your own forms and into your Sonata Admin backend. For this to work, you must add
+the following method to your translatable entities:
+
+```php
+public static function getTranslationEntityClass()
+{
+    return 'Your\Translation\Class';
+}
+```
+
+For more information, see the [A2LiX TranslationForm documentation](http://a2lix.fr/bundles/translation-form/). Follow the examples
+for the KnpDoctrineExtensions and other indexBy strategies.
