@@ -1,7 +1,7 @@
-doctrine-translatable-bundle
-============================
+prezent/doctrine-translatable-bundle
+====================================
 
-Integrate the doctrine-translatable extension in Symfony2.
+This bundle integrates the [prezent/doctrine-translatable](https://github.com/Prezent/doctrine-translatable) extension in Symfony2.
 
 ## Prerequisites
 
@@ -47,9 +47,15 @@ public function registerBundles()
 ### Step 3: Configuration
 
 You can optionlly configure the fallback locale (default: en).
-The current locale is automatically set from the request and defaults to the fallback locale.
+The current locale is automatically set from the current Request. It defaults to the
+fallback\_locale which you can configure in your config.yml.
 
 ```yaml
 prezent_doctrine_translatable:
     fallback_locale: en
 ```
+
+## Usage
+
+Please refer to the [doctrine-translatable documentation](https://github.com/Prezent/doctrine-translatable/blob/master/doc/index.md)
+on how to use the translatable extension.
