@@ -23,7 +23,7 @@
     },
     "require": {
         "doctrine/doctrine-bundle": ">=1.2.0,<1.3-dev",
-        "prezent/doctrine-translatable": "dev-master",
+        "prezent/doctrine-translatable": ">=0.1,<1.0-dev",
         "symfony/symfony": ">=2.2,<2.5-dev"
     },
     "autoload": {
