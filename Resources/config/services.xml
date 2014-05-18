@@ -9,6 +9,7 @@
         <parameter key="prezent_doctrine_translatable.metadata_factory.class">Metadata\MetadataFactory</parameter>
         <parameter key="prezent_doctrine_translatable.driver_chain.class">Metadata\Driver\DriverChain</parameter>
         <parameter key="prezent_doctrine_translatable.driver.annotation.class">Prezent\Doctrine\Translatable\Mapping\Driver\AnnotationDriver</parameter>
+        <parameter key="prezent_doctrine_translatable.driver.yaml.class">Prezent\Doctrine\Translatable\Mapping\Driver\YamlDriver</parameter>
     </parameters>
 
     <services>
@@ -16,6 +17,12 @@
             <argument type="service">
                 <service class="%prezent_doctrine_translatable.driver_chain.class%">
                     <argument type="collection">
+                        <argument type="service">
+                            <service class="%prezent_doctrine_translatable.driver.yaml.class%">
+                                <argument type="constant">NULL</argument>
+                                <argument type="service" id="doctrine" />
+                            </service>
+                        </argument>
                         <argument type="service">
                             <service class="%prezent_doctrine_translatable.driver.annotation.class%">
                                 <argument type="service" id="annotation_reader" />
