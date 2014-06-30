@@ -22,9 +22,9 @@
         "source": "https://github.com/prezent/doctrine-translatable-bundle"
     },
     "require": {
-        "doctrine/doctrine-bundle": ">=1.2.0,<1.3-dev",
+        "doctrine/doctrine-bundle": "~1.2",
         "prezent/doctrine-translatable": ">=0.1,<0.2-dev",
-        "symfony/symfony": ">=2.2,<2.5-dev"
+        "symfony/symfony": "~2.2"
     },
     "autoload": {
         "psr-0": { "Prezent\\Doctrine\\TranslatableBundle": "" }
