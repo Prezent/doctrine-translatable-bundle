@@ -23,11 +23,16 @@
     },
     "require": {
         "doctrine/doctrine-bundle": "~1.2",
-        "prezent/doctrine-translatable": ">=0.1,<0.2-dev",
+        "prezent/doctrine-translatable": ">=0.2,<0.3-dev",
         "symfony/symfony": "~2.2"
     },
     "autoload": {
         "psr-0": { "Prezent\\Doctrine\\TranslatableBundle": "" }
     },
-    "target-dir": "Prezent/Doctrine/TranslatableBundle"
+    "target-dir": "Prezent/Doctrine/TranslatableBundle",
+    "extra": {
+        "branch-alias": {
+            "dev-master": "0.3.x-dev"
+        }
+    }
 }
