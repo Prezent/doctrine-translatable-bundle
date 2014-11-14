@@ -10,28 +10,16 @@
         <parameter key="prezent_doctrine_translatable.driver_chain.class">Metadata\Driver\DriverChain</parameter>
         <parameter key="prezent_doctrine_translatable.driver.annotation.class">Prezent\Doctrine\Translatable\Mapping\Driver\AnnotationDriver</parameter>
         <parameter key="prezent_doctrine_translatable.driver.yaml.class">Prezent\Doctrine\Translatable\Mapping\Driver\YamlDriver</parameter>
+        <parameter key="prezent_doctrine_translatable.driver.xml.class">Prezent\Doctrine\Translatable\Mapping\Driver\XmlDriver</parameter>
+
     </parameters>
 
     <services>
         <service id="prezent_doctrine_translatable.metadata_factory" class="%prezent_doctrine_translatable.metadata_factory.class%">
-            <argument type="service">
-                <service class="%prezent_doctrine_translatable.driver_chain.class%">
-                    <argument type="collection">
-                        <argument type="service">
-                            <service class="%prezent_doctrine_translatable.driver.yaml.class%">
-                                <argument type="constant">NULL</argument>
-                                <argument type="service" id="doctrine" />
-                            </service>
-                        </argument>
-                        <argument type="service">
-                            <service class="%prezent_doctrine_translatable.driver.annotation.class%">
-                                <argument type="service" id="annotation_reader" />
-                            </service>
-                        </argument>
-                    </argument>
-                </service>
-            </argument>
+            <argument type="service" id="prezent_doctrine_translatable.driver_chain"/>
         </service>
+
+        <service id="prezent_doctrine_translatable.driver_chain" class="%prezent_doctrine_translatable.driver_chain.class%"/>
 
         <service id="prezent_doctrine_translatable.listener" class="%prezent_doctrine_translatable.listener.class%">
             <argument type="service" id="prezent_doctrine_translatable.metadata_factory" />
