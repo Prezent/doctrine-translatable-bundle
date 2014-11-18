@@ -9,6 +9,8 @@
 
 namespace Prezent\Doctrine\TranslatableBundle;
 
+use Prezent\Doctrine\TranslatableBundle\DependencyInjection\Compiler\DriverChainCompilerPass;
+use Symfony\Component\DependencyInjection\ContainerBuilder;
 use Symfony\Component\HttpKernel\Bundle\Bundle;
 
 /**
@@ -18,4 +20,10 @@ use Symfony\Component\HttpKernel\Bundle\Bundle;
  */
 class PrezentDoctrineTranslatableBundle extends Bundle
 {
+    public function build(ContainerBuilder $container)
+    {
+        parent::build($container);
+
+        $container->addCompilerPass(new DriverChainCompilerPass());
+    }
 }
