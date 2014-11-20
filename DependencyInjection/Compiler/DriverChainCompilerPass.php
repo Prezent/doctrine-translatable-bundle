@@ -22,13 +22,16 @@ class DriverChainCompilerPass implements CompilerPassInterface
         $driver = $container->getDefinition('prezent_doctrine_translatable.driver_chain');
 
         foreach ($container->getParameter('doctrine.entity_managers') as $name => $manager) {
-            $adapter = new Definition('Metadata\\Driver\\DriverInterface', [
-                new Reference(sprintf('doctrine.orm.%s_metadata_driver', $name)),
-            ]);
+            $adapter = new Definition(
+               'Metadata\\Driver\\DriverInterface', 
+                array(
+                    new Reference(sprintf('doctrine.orm.%s_metadata_driver', $name)),
+                )
+            );
             $adapter->setFactoryClass('Prezent\\Doctrine\\Translatable\\Mapping\\Driver\\DoctrineAdapter');
             $adapter->setFactoryMethod('fromMetadataDriver');
 
-            $driver->addMethodCall('addDriver', [$adapter]);
+            $driver->addMethodCall('addDriver', array($adapter));
         }
     }
 }
