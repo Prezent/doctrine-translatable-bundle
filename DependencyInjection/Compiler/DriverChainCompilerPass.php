@@ -28,8 +28,16 @@ class DriverChainCompilerPass implements CompilerPassInterface
                     new Reference(sprintf('doctrine.orm.%s_metadata_driver', $name)),
                 )
             );
-            $adapter->setFactoryClass('Prezent\\Doctrine\\Translatable\\Mapping\\Driver\\DoctrineAdapter');
-            $adapter->setFactoryMethod('fromMetadataDriver');
+
+            $class = 'Prezent\\Doctrine\\Translatable\\Mapping\\Driver\\DoctrineAdapter';
+            $method = 'fromMetadataDriver';
+
+            if (method_exists($adapter, 'setFactory')) {
+                $adapter->setFactory([$class, $method]);
+            } else {
+                $adapter->setFactoryClass($class);
+                $adapter->setFactoryMethod($method);
+            }
 
             $driver->addMethodCall('addDriver', array($adapter));
         }
