@@ -11,20 +11,10 @@ This bundle requires Symfony 2.2+.
 
 ### Step 1: Download using Composer
 
-Add this bundle to your composer.json:
-
-```js
-{
-    "require": {
-        "prezent/doctrine-translatable-bundle": "dev-master"
-    }
-}
-```
-
 Tell Composer to install the bundle:
 
 ```bash
-$ php composer.phar update prezent/doctrine-translatable-bundle
+$ php composer.phar require prezent/doctrine-translatable-bundle
 ```
 
 ### Step 2: Enable the bundle
