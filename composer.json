@@ -24,7 +24,7 @@
     "require": {
         "doctrine/doctrine-bundle": "~1.2",
         "prezent/doctrine-translatable": ">=1.0,<2.0-dev",
-        "symfony/symfony": "~2.2|~3.0"
+        "symfony/symfony": "~2.2 || ~3.0 || ~4.0"
     },
     "autoload": {
         "psr-4": { "Prezent\\Doctrine\\TranslatableBundle\\": "" }
