@@ -41,7 +41,7 @@ class TranslatableFilter extends StringFilter
     /**
      * {@inheritdoc}
      */
-    public function filter(ProxyQueryInterface $queryBuilder, $alias, $field, $data)
+    public function filter(ProxyQueryInterface $queryBuilder, $alias, $field, $data): void
     {
         if (!$data || !is_array($data) || !array_key_exists('value', $data)) {
             return;
