@@ -80,7 +80,16 @@ class TranslatableFilter extends StringFilter
 
         // c.name > '1' => c.name OPERATOR :FIELDNAME
         $parameterName = $this->getNewParameterName($queryBuilder);
-        $this->applyWhere($queryBuilder, sprintf('%s.%s %s :%s', 'trans', $field, $operator, $parameterName));
+
+        $or = $queryBuilder->expr()->orX();
+
+        $or->add(sprintf('%s.%s %s :%s', 'trans', $field, $operator, $parameterName));
+
+        if (ChoiceType::TYPE_NOT_CONTAINS == $data['type']) {
+            $or->add($queryBuilder->expr()->isNull(sprintf('%s.%s', 'trans', $field)));
+        }
+
+        $this->applyWhere($queryBuilder, $or);
 
         if ($data['type'] == ChoiceType::TYPE_EQUAL) {
             $queryBuilder->setParameter($parameterName, $data['value']);
