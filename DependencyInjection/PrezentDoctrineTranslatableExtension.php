@@ -37,9 +37,25 @@ class PrezentDoctrineTranslatableExtension extends Extension
                   ->addMethodCall('setCurrentLocale', array($config['fallback_locale']))
                   ->addMethodCall('setFallbackLocale', array($config['fallback_locale']));
 
+        $this->loadSonata();
+    }
+
+    private function loadSonata()
+    {
         $bundles = $container->getParameter('kernel.bundles');
-        if (isset($bundles['SonataDoctrineORMAdminBundle'])) {
-            $loader->load('sonata.xml');
+
+        if (!isset($bundles['SonataDoctrineORMAdminBundle'])) {
+            return; // Sonata not installed
         }
+
+        $refl = new \ReflectionMethod('Sonata\\DoctrineORMAdminBundle\\Filter\\StringFilter', 'filter');
+
+        if (method_exists($refl, 'getReturnType')) {
+            if ($returnType = $refl->getReturnType()) {
+                return; // Not compatible with this Sonata version
+            }
+        }
+
+        $loader->load('sonata.xml');
     }
 }
