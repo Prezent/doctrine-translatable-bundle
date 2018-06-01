@@ -10,9 +10,7 @@
 namespace Prezent\Doctrine\TranslatableBundle\DependencyInjection;
 
 use Symfony\Component\DependencyInjection\ContainerBuilder;
-use Symfony\Component\DependencyInjection\Definition;
 use Symfony\Component\DependencyInjection\Loader;
-use Symfony\Component\DependencyInjection\Reference;
 use Symfony\Component\Config\FileLocator;
 use Symfony\Component\HttpKernel\DependencyInjection\Extension;
 
@@ -24,7 +22,7 @@ use Symfony\Component\HttpKernel\DependencyInjection\Extension;
 class PrezentDoctrineTranslatableExtension extends Extension
 {
     /**
-     * {@inheritDoc}
+     * {@inheritdoc}
      */
     public function load(array $configs, ContainerBuilder $container)
     {
@@ -37,10 +35,16 @@ class PrezentDoctrineTranslatableExtension extends Extension
                   ->addMethodCall('setCurrentLocale', array($config['fallback_locale']))
                   ->addMethodCall('setFallbackLocale', array($config['fallback_locale']));
 
-        $this->loadSonata();
+        $this->loadSonata($container, $loader);
     }
 
-    private function loadSonata()
+    /**
+     * Load the Sonata configuration, if the versions is supported
+     *
+     * @param ContainerBuilder $container
+     * @param Loader\XmlFileLoader $loader
+     */
+    private function loadSonata(ContainerBuilder $container, Loader\XmlFileLoader $loader)
     {
         $bundles = $container->getParameter('kernel.bundles');
 
