@@ -37,10 +37,13 @@ class PrezentDoctrineTranslatableExtension extends Extension
                   ->addMethodCall('setCurrentLocale', array($config['fallback_locale']))
                   ->addMethodCall('setFallbackLocale', array($config['fallback_locale']));
 
-        $this->loadSonata();
+        $this->loadSonata($container);
     }
 
-    private function loadSonata()
+    /**
+     * @param ContainerBuilder $container
+     */
+    private function loadSonata(ContainerBuilder $container)
     {
         $bundles = $container->getParameter('kernel.bundles');
 
