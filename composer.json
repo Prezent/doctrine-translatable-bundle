@@ -22,13 +22,13 @@
         "source": "https://github.com/prezent/doctrine-translatable-bundle"
     },
     "require": {
-        "doctrine/doctrine-bundle": "~1.2",
+        "doctrine/doctrine-bundle": "^1.2",
         "prezent/doctrine-translatable": ">=1.0,<2.0-dev",
-        "symfony/config": "~2.2 || ~3.0 || ~4.0",
-        "symfony/dependency-injection": "~2.2 || ~3.0 || ~4.0",
-        "symfony/event-dispatcher": "~2.2 || ~3.0 || ~4.0",
-        "symfony/http-foundation": "~2.2 || ~3.0 || ~4.0",
-        "symfony/http-kernel": "~2.2 || ~3.0 || ~4.0"
+        "symfony/config": "^2.7|^3.0|^4.0",
+        "symfony/dependency-injection": "^2.7|^3.0|^4.0",
+        "symfony/event-dispatcher": "^2.7|^3.0|^4.0",
+        "symfony/http-foundation": "^2.7|^3.0|^4.0",
+        "symfony/http-kernel": "^2.7|^3.0|^4.0"
     },
     "require-dev": {
         "symfony/phpunit-bridge": "^4.1",
