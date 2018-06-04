@@ -1,7 +1,7 @@
 doctrine-translatable-bundle
 ============================
 
-[![Build Status](https://travis-ci.org/Prezent/doctrine-translatable-bundle.png?branch=master)](https://travis-ci.org/Prezent/doctrine-translatable-bundle)
+[![Build Status](https://travis-ci.org/Prezent/doctrine-translatable-bundle.svg?branch=master)](https://travis-ci.org/Prezent/doctrine-translatable-bundle)
 
 Integrate the doctrine-translatable extension in Symfony2.
 
