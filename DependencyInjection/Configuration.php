@@ -25,7 +25,14 @@ class Configuration implements ConfigurationInterface
     public function getConfigTreeBuilder()
     {
         $treeBuilder = new TreeBuilder('prezent_doctrine_translatable');
-        $treeBuilder->getRootNode()
+
+        if (method_exists($treeBuilder, 'getRootNode')) {
+            $rootNode = $treeBuilder->getRootNode();
+        } else {
+            $rootNode = $treeBuilder->root('prezent_doctrine_translatable');
+        }
+
+        $rootNode
             ->children()
                 ->scalarNode('fallback_locale')->defaultValue('en')->end()
             ->end();
