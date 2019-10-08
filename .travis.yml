@@ -15,11 +15,8 @@ matrix:
           env: SYMFONY_LTS='^3'
         # Symfony 4
         - php: 7.1
-        - php: 7.1
-          env: SONATA='^3.6'
-        - php: 7.1
-          env: SONATA='dev-master'
         - php: 7.2
+        - php: 7.3
 
 before_install:
   - if [ "$SYMFONY_LTS" != "" ]; then composer require --dev --no-update symfony/lts=$SYMFONY_LTS; fi
