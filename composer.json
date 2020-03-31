@@ -1,6 +1,6 @@
 {
     "name": "prezent/doctrine-translatable-bundle",
-    "type": "library",
+    "type": "symfony-bundle",
     "description": "Integrate the doctrine-translatable extension in Symfony2",
     "keywords": [
         "doctrine2",
