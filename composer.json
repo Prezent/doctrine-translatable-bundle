@@ -1,5 +1,5 @@
 {
-    "name": "prolix/doctrine-translatable-bundle",
+    "name": "prezent/doctrine-translatable-bundle",
     "type": "symfony-bundle",
     "description": "Integrate the doctrine-translatable extension in Symfony2",
     "keywords": [
