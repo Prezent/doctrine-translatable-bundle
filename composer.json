@@ -24,7 +24,7 @@
     "require": {
         "php": ">=7.4.0|>=8.2",
         "doctrine/doctrine-bundle": "^2.0|^3.0",
-        "prezent/doctrine-translatable": "^2.0|^3.0",
+        "prezent/doctrine-translatable": "dev-symfony7-upgrade",
         "symfony/config": "^5.0|^6.0|^7.0",
         "symfony/dependency-injection": "^5.0|^6.0|^7.0",
         "symfony/event-dispatcher": "^5.0|^6.0|^7.0",
