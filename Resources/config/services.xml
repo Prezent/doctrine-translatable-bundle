@@ -11,6 +11,8 @@
     </parameters>
 
     <services>
+        <defaults autowire="true" autoconfigure="true" public="false" />
+
         <service id="prezent_doctrine_translatable.driver_chain" class="%prezent_doctrine_translatable.driver_chain.class%" />
 
         <service id="prezent_doctrine_translatable.metadata_factory" class="%prezent_doctrine_translatable.metadata_factory.class%">
@@ -19,7 +21,8 @@
 
         <service id="prezent_doctrine_translatable.listener" class="%prezent_doctrine_translatable.listener.class%">
             <argument type="service" id="prezent_doctrine_translatable.metadata_factory" />
-            <tag name="doctrine.event_subscriber" connection="default" />
+            <tag name="doctrine.event_listener" event="loadClassMetadata" connection="default" />
+            <tag name="doctrine.event_listener" event="postLoad" connection="default" />
         </service>
 
         <service id="prezent_doctrine_translatable.listener.locale" class="%prezent_doctrine_translatable.listener.locale.class%">
