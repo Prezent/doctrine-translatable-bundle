@@ -32,7 +32,6 @@ class PrezentDoctrineTranslatableExtensionTest extends TestCase
 
         if (!$sonataVersion) {
             $this->markTestSkipped('Sonata is not installed.');
-            return;
         }
 
         $container = new ContainerBuilder();

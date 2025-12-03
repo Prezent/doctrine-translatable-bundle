@@ -15,7 +15,7 @@ class DriverChainCompilerPassTest extends TestCase
     public function testDrivers()
     {
         $chain = $this->getMockBuilder(Definition::class)
-            ->setMethods(['addMethodCall'])
+            ->onlyMethods(['addMethodCall'])
             ->getMock();
 
         $chain->expects($this->exactly(2))
@@ -23,7 +23,7 @@ class DriverChainCompilerPassTest extends TestCase
             ->with('addDriver', $this->anything());
 
         $builder = $this->getMockBuilder(ContainerBuilder::class)
-            ->setMethods(['getDefinition', 'getParameter'])
+            ->onlyMethods(['getDefinition', 'getParameter'])
             ->getMock();
 
         $builder->method('getDefinition')->willReturn($chain);
