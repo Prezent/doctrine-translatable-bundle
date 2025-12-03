@@ -15,7 +15,7 @@ use Symfony\Component\HttpKernel\Event\KernelEvent;
 use Symfony\Component\HttpKernel\KernelEvents;
 
 /**
- * Inject current locale in the TranslatableListener
+ * Inject the current locale in the TranslatableListener
  *
  * @see EventSubscriberInterface
  */
@@ -38,11 +38,8 @@ class LocaleListener implements EventSubscriberInterface
 
     /**
      * Set request locale
-     *
-     * @param RequestEvent $event
-     * @return void
      */
-    public function onKernelRequest(KernelEvent $event)
+    public function onKernelRequest(KernelEvent $event): void
     {
         $this->translatableListener->setCurrentLocale($event->getRequest()->getLocale());
     }
@@ -50,7 +47,7 @@ class LocaleListener implements EventSubscriberInterface
     /**
      * {@inheritdoc}
      */
-    static public function getSubscribedEvents()
+    static public function getSubscribedEvents(): array
     {
         return array(
             KernelEvents::REQUEST => [['onKernelRequest', 10]],

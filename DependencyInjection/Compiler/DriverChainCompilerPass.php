@@ -17,7 +17,7 @@ class DriverChainCompilerPass implements CompilerPassInterface
     /**
      * {@inheritDoc}
      */
-    public function process(ContainerBuilder $container)
+    public function process(ContainerBuilder $container): void
     {
         $driver = $container->getDefinition('prezent_doctrine_translatable.driver_chain');
 
