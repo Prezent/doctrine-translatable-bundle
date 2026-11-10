@@ -28,8 +28,8 @@ class PrezentDoctrineTranslatableExtension extends Extension
     {
         $config = $this->processConfiguration(new Configuration(), $configs);
 
-        $loader = new Loader\XmlFileLoader($container, new FileLocator(__DIR__.'/../Resources/config'));
-        $loader->load('services.xml');
+        $loader = new Loader\PhpFileLoader($container, new FileLocator(__DIR__.'/../Resources/config'));
+        $loader->load('services.php');
 
         $container->getDefinition('prezent_doctrine_translatable.listener')
                   ->addMethodCall('setCurrentLocale', array($config['fallback_locale']))
@@ -42,9 +42,9 @@ class PrezentDoctrineTranslatableExtension extends Extension
      * Load the Sonata configuration, if the versions is supported
      *
      * @param ContainerBuilder $container
-     * @param Loader\XmlFileLoader $loader
+     * @param Loader\PhpFileLoader $loader
      */
-    private function loadSonata(ContainerBuilder $container, Loader\XmlFileLoader $loader)
+    private function loadSonata(ContainerBuilder $container, Loader\PhpFileLoader $loader)
     {
         $bundles = $container->getParameter('kernel.bundles');
 
@@ -60,6 +60,6 @@ class PrezentDoctrineTranslatableExtension extends Extension
             }
         }
 
-        $loader->load('sonata.xml');
+        $loader->load('sonata.php');
     }
 }
